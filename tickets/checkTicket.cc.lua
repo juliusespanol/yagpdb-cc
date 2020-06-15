@@ -1,10 +1,10 @@
-    {{/*
-        Master command: -CheckTickets (alias -ct)
-        Sub commands: FullList (fl|full|big) / SmallList (sl|small) / Oldest (o|old) / Newest (n|new) / Exact Ticket, for example -ct 107
-        Trigger: Regex
-        Regex: \A-(((checktickets|ct) (o(ld(est)?)?|n(ew(est)?)?|full(list)?|fl|big|small(list)?|sl|\d+))|(checktickets|ct))\z
-        Dont change anything!
-    /*}}
+{{/*
+    Master command: -CheckTickets (alias -ct)
+    Sub commands: FullList (fl|full|big) / SmallList (sl|small) / Oldest (o|old) / Newest (n|new) / Exact Ticket, for example -ct 107
+    Trigger: Regex
+    Regex: \A-(((checktickets|ct) (o(ld(est)?)?|n(ew(est)?)?|full(list)?|fl|big|small(list)?|sl|\d+))|(checktickets|ct))\z
+    Dont change anything!
+/*}}
 
 
 {{/*ACTUAL CODE! DONT TOUCH*/}}
