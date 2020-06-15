@@ -16,7 +16,7 @@
     {{$counter := toInt $master.ticketCounter}}
     {{$entries := dbTopEntries $key 15 0}}
     {{$desc := ""}}
-    {{$setup := sdict (dbGet 0 "ticket_cfg").Value}}
+    {{$setup := sdict}} {{with (dbGet 0 "ticket_cfg").Value}} {{$setup = sdict .}} {{end}}
     {{$SchedueledCCID := toInt $setup.SchedueledCCID}}
     {{$TO := $setup.ticketOpen}}{{$TS := $setup.ticketSolving}}{{$TC := $setup.ticketClose}}
     {{$masterChannel := toInt $setup.masterTicketChannelID}}
