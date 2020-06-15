@@ -9,7 +9,7 @@
 /*}}
 
 {{/*ACTUAL CODE! DONT TOUCH*/}}
-{{$setup := sdict (dbGet 0 "ticket_cfg").Value}}{{$ticketOpen := $setup.ticketOpen}}{{$ticketClose := $setup.ticketClose}}{{$ticketSolving := $setup.ticketSolving}}
+{{$setup := sdict}} {{with (dbGet 0 "ticket_cfg").Value}} {{$setup = sdict .}} {{end}} {{$ticketOpen := $setup.ticketOpen}}{{$ticketClose := $setup.ticketClose}}{{$ticketSolving := $setup.ticketSolving}}
 {{$emoji := .Reaction.Emoji.Name}}{{$t2 := "Ticket ID: "}}{{$RM := .ReactionMessage}}{{$isTE := false}}{{$estado := ""}}{{$printmod := ""}}{{$embed := ""}}{{$timed := ""}}{{$fields := ""}}{{$t := ""}}{{$NT := false}}{{$OT := false}}{{$pos := 0}}{{$list := cslice}}{{$bubbles := sdict}}{{$footer := "🎟️"}}{{$c := false}}{{$id := ""}}{{$a := false}}{{$cL := 0}}
 {{if .IsPremium}}
     {{with and (eq $RM.Author.ID 204255221017214977) $RM.Embeds}}
