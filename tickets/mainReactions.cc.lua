@@ -7,7 +7,7 @@
 /*}}
 
 {{/* ACTUAL CODE! DONT TOUCH */}}
-{{$setup := sdict (dbGet 0 "ticket_cfg").Value}}
+{{$setup := sdict}} {{with (dbGet 0 "ticket_cfg").Value}} {{$setup = sdict .}} {{end}}
 {{$admins := $setup.Admins}}
 {{$mods := $setup.Mods}}
 {{$CCID := toInt $setup.CCID}}
