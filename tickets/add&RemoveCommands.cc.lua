@@ -12,7 +12,7 @@
 /*}}
 
 {{/* ACTUAL CODE! DONT TOUCH */}}
-{{$setup := sdict (dbGet 0 "ticket_cfg").Value}}
+{{$setup := sdict}} {{with (dbGet 0 "ticket_cfg").Value}} {{$setup = sdict .}} {{end}}
 {{$category := toInt $setup.category}}
 {{$admins := $setup.Admins}}
 {{$mods := $setup.Mods}}
