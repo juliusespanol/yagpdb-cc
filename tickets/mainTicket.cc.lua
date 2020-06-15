@@ -9,7 +9,7 @@
 {{/* START */}}
 {{$tn := reFind `\d+` .Channel.Name}}
 {{editChannelName .Channel.ID (print "ticket-" $tn)}}
-{{$setup := sdict (dbGet 0 "ticket_cfg").Value}}
+{{$setup := sdict}} {{with (dbGet 0 "ticket_cfg").Value}} {{$setup = sdict .}} {{end}}
 {{$CloseEmoji := $setup.CloseEmoji}}
 {{$SolveEmoji := $setup.SolveEmoji}}
 {{$AdminOnlyEmoji := $setup.AdminOnlyEmoji}}
