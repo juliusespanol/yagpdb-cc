@@ -13,7 +13,7 @@
 {{if .ExecData.test}}
     {{execCC .ExecData.thisCC nil 1 (sdict "id" .ExecData.id)}}
 {{else}}
-    {{$setup := sdict (dbGet 0 "ticket_cfg").Value}}
+    {{$setup := sdict}} {{with (dbGet 0 "ticket_cfg").Value}} {{$setup = sdict .}} {{end}}
     {{$CCID := toInt $setup.CCID}}
     {{$alert := .ExecData.alert}}
     {{$tn := reFind `\d+` .Channel.Name}}
