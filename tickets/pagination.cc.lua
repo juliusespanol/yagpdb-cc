@@ -8,7 +8,7 @@
 
 {{/* ACTUAL CODE! DONT TOUCH */}}
 {{/* VARIABLES */}}
-{{$setup := sdict (dbGet 0 "ticket_cfg").Value}}
+{{$setup := sdict}} {{with (dbGet 0 "ticket_cfg").Value}} {{$setup = sdict .}} {{end}}
 {{$ticketOpen := $setup.ticketOpen}}{{$ticketClose := $setup.ticketClose}}{{$ticketSolving := $setup.ticketSolving}}
 {{$emoji := .Reaction.Emoji.Name}}
 {{$t2 := "Ticket ID: "}}
