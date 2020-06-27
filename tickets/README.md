@@ -38,7 +38,7 @@ After that you can delete the setup command.<p>
 1. Can you join in my server and set it up for me?<p>
 	No.
 1. Is there an official video showing the system and how to set it up?<p>
-	Yes, check it [clicking here](https://www.youtube.com).
+	No, but I might make one at some point.
 
 ### Screenshots
 <h1 align="center"><img src="https://imgur.com/IpFJWNq.png" height=341px width=890px></img><p><p>
