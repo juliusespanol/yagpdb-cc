@@ -33,9 +33,9 @@
         {{$DeleteEmoji := "⛔"}}
 
     {{/* Ticket Status */}}
-        {{$ticketOpen := "Open"}} {{/* Status for the chat of an open ticket - CAN NOT HAVE ANY SPECIAL CHARACTERS OR SPACE */}}
-        {{$ticketClose := "Closed"}} {{/* Status for the chat of a closed ticket - CAN NOT HAVE ANY SPECIAL CHARACTERS OR SPACE */}}
-        {{$ticketSolving := "Solving"}} {{/* Status for the chat of an solving ticket - CAN NOT HAVE ANY SPECIAL CHARACTERS OR SPACE */}}
+        {{$ticketOpen := "Open"}} {{/* Status of an open ticket - CAN NOT HAVE ANY SPECIAL CHARACTERS OR SPACE */}}
+        {{$ticketClose := "Closed"}} {{/* Status of a closed ticket - CAN NOT HAVE ANY SPECIAL CHARACTERS OR SPACE */}}
+        {{$ticketSolving := "Solving"}} {{/* Status of an solving ticket - CAN NOT HAVE ANY SPECIAL CHARACTERS OR SPACE */}}
 
     {{/* Misc */}}
         {{$CCID := 132}} {{/* ID of your "Range CC" */}}
@@ -54,28 +54,26 @@
     {{$error := ""}}
     {{$guildRoles := cslice}} {{range .Guild.Roles}} {{$guildRoles = $guildRoles.Append .ID}} {{end}} {{$invalid := false}}
 
-    {{if eq (len $Admins) 0}}
+    {{if not $Admins}}
         {{$error = print $error "\n" "You need to set at least one admin role in the **$Admins** variable"}}
-    {{end}}
-    {{if $Admins}}
+    {{else}}
         {{range $Admins}}
             {{- if not (in $guildRoles .)}} {{$invalid = true}} {{end -}}
         {{end}}
         {{if $invalid}}
             {{$error = print $error "\n" "One or more of the admins roles provided in **$Admins** are not valid roles."}}
         {{end}}
-    {{end}}
-    {{if eq (len $Mods) 0}}
+    {{end}} {{$invalid = false}}
+
+
+    {{if not $Mods}}
         {{$error = print $error "\n" "You need to set at least one admin role in the **$Admins** variable"}}
-    {{end}}
-
-
-    {{if $Mods}}
+    {{else}}
         {{range $Mods}}
             {{- if not (in $guildRoles .)}} {{$invalid = true}} {{end -}}
         {{end}}
         {{if $invalid}}
-            {{$error = print $error "\n" "One or more of the admins roles provided in **$Mods** are not valid roles."}}
+            {{$error = print $error "\n" "One or more of the mod roles provided in **$Mods** are not valid roles."}}
         {{end}}
     {{end}}
 
@@ -136,7 +134,7 @@
     {{if $Delay}}
         {{if ne (printf "%T" $Delay) "int"}}
             {{$error = print $error "\n" "The variable **$Delay** has to be an integer. i.e 1, 2, 3, etc...\nIt cannot be 2.75 for example"}}
-        {{else if lt $Delay 0}}
+        {{else if lt $Delay 1}}
             {{$error = print $error "\n" "The variable **$Delay** can not be less than 1."}}
         {{end}}
     {{end}}
