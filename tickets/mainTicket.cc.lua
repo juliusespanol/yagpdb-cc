@@ -74,8 +74,6 @@
         {{- end -}}
     {{end}}
 {{end}}
-{{$list := cslice (len $TO) (len $TC) (len $TS)}}
-{{$biggest := 0}}
 {{$desc := printf "%s - %-10s\n" "**TicketID**" "**Status**"}}
 {{range $arr}} {{- $desc = print $desc (printf (print "`#%06d` - `%-" (index . 1 | len) "s`\n") (index . 0 | toInt) (index . 1)) -}} {{end}}
 {{editMessage $masterChannel $displayMSGID (cembed "title" "Tickets Display" "color" (randInt 16777216) "description" $desc)}}
