@@ -1,6 +1,10 @@
 # Reaction-Ticket-CC
 **IMPORTANT NOTE:** If you are using this CC, you **MUST DISABLE** all tickets commands.<p>
-Also, ***never*** change the name of a ticket chat.
+Also, ***never*** change the name of a ticket chat.<p><p>
+
+I you were using the older version of this system, I **highly** recommend you update **ALL** the CCs. A lot of bugs have been fixed.
+Also, after that, you will need to run the setuptickets command once more. 
+Don't worry, your already opened tickets won't be affected. 
 
 ## Features
 1. Tickets work fully with reactions. You can open, close, reopen, delete, save transcript, make it admin only, etc, all with reactions.
