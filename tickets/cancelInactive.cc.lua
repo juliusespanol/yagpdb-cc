@@ -1,4 +1,5 @@
 {{/*
+    Name: cancelInactive.cc.lua
     This command manages the inactivity of tickets.
 
     Dont change anything!
