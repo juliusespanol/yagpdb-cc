@@ -1,4 +1,5 @@
 {{/*
+    Name: checkTicket.cc.lua
     Master command: -CheckTickets (alias -ct)
     Sub commands: FullList (fl|full|big) / SmallList (sl|small) / Oldest (o|old) / Newest (n|new) / Exact Ticket, for example -ct 107
     Trigger: Regex
