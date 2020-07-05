@@ -1,4 +1,5 @@
 {{/*
+    Name: range.cc.lua
     Dont change anything!
 
     This is the "Range CC" command.
