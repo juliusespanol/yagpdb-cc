@@ -1,4 +1,5 @@
 {{/*
+    Name: mainTicket.cc.lua
     This command is to go into your "Opening message in new tickets" box.
     (Control panel -> Tools & Utilities -> Ticket Sytem)
 
