@@ -93,7 +93,7 @@
     {{end}}
 
 
-    {{if or (reFind `[^a-zA-Z\d]` $ticketOpen) (reFind `[^a-zA-Z\d]` $ticketClose) (reFind `[^a-zA-Z\d]` $ticketSolving)}}
+    {{if or (reFind `[^a-zA-Z\d-]` $ticketOpen) (reFind `[^a-zA-Z\d-]` $ticketClose) (reFind `[^a-zA-Z\d-]` $ticketSolving)}}
         {{$error = "Incorrect setup.\n**$ticketOpen $ticketClose $ticketSolving** can **NOT** have special characters like `á` or even white spaces ` `.\nThey also have to be a single word."}}
     {{end}}
 
