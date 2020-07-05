@@ -1,4 +1,5 @@
 {{/*
+    Name: setupTickets.cc.lua
     This command is your setup command, you should add this command last.
     Run it only once, and you should be good to go.
 
