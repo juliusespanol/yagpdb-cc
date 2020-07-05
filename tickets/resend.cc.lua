@@ -39,7 +39,7 @@
         {{deleteMessage nil (toInt $master.mainMsgID) 2}}
         {{$autor := $master.creator}}
         {{$content := print "Welcome, **" $autor.Username "**"}}
-        {{$descr := print "Soon a  <@&" $ModeratorRoleID "> will talk to you! For now, you can start telling us what's the issue, so that we can help you faster! :)\nIn case you dont need help anymore, or you want to close this ticket, click on the " $CloseEmoji " and then on the " $ConfirmCloseEmoji " that will show up!"}}
+        {{$descr := print "An <@&" $ModeratorRoleID "> will talk to you soon!\n\nFor now, please describe in **detail** your concern/issue so that we can respond faster!\n\nAn available mod will use the " $SolveEmoji " icon to assign the ticket to themself.\n\nIf you feel that this issue needs to be **escalated**, or have concerns about any of our staff, please click the " $AdminOnlyEmoji " icon.\n\nTo close the ticket, click on the " $CloseEmoji ". Click the " $ConfirmCloseEmoji " icon to confirm or the " $CancelCloseEmoji " icon to cancel."}}
         {{$embed := cembed "color" 8190976 "description" $descr "timestamp" $time}}
         {{$id := sendMessageNoEscapeRetID nil (complexMessage "content" $content "embed" $embed)}}
         {{addMessageReactions nil $id $CloseEmoji $SolveEmoji $AdminOnlyEmoji}}
