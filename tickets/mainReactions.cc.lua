@@ -1,4 +1,5 @@
 {{/*
+    Name: mainReactions.cc.lua
     This command manages the tickets reactions.
 
     Dont change anything!
