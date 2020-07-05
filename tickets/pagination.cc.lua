@@ -1,4 +1,5 @@
 {{/*
+    Name: pagination.cc.lua
     This command manages the pagination of certain embeds
 
     Dont change anything!
