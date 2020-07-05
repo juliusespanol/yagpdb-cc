@@ -1,4 +1,5 @@
 {{/*
+    Name: premiumPageUp.cc.lua
     This command manages the pagination of certain embeds
 
     You only need this if you are premium
