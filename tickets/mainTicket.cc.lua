@@ -8,6 +8,7 @@
 
 {{/* ACTUAL CODE! DONT TOUCH */}}
 {{/* START */}}
+{{sleep 3}}
 {{$tn := reFind `\d+` .Channel.Name}}
 {{editChannelName .Channel.ID (print "ticket-" $tn)}}
 {{$setup := sdict}} {{with (dbGet 0 "ticket_cfg").Value}} {{$setup = sdict .}} {{end}}
