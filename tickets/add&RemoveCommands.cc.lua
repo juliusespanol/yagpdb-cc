@@ -1,4 +1,5 @@
 {{/*
+    Name: add&RemoveCommands.cc.lua
     This command manages the $add and $remove commands.
 
     Dont change anything!
