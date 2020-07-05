@@ -1,4 +1,5 @@
 {{/*
+    Name: resend.cc.lua
     This command manages the -resend command
 
     It deletes the original first message of the ticket and resends it so that you dont have to scroll up to make actions!
