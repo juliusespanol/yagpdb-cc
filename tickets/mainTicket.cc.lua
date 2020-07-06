@@ -57,7 +57,7 @@
     {{end}}
     {{dbSet 0 "ticketDisplay" $map}}
 {{else}}
-    {{dbSet 0 "ticketDisplay" (sdict $tn $TO)}}
+    {{dbSet 0 "ticketDisplay" (sdict (str $.Channel.ID) $TO)}}
 {{end}}
 {{$arr := cslice}}
 {{with (dbGet 0 "ticketDisplay").Value}}
@@ -79,4 +79,3 @@
 {{$desc := printf "%s - %-10s\n" "**TicketID**" "**Status**"}}
 {{range $arr}} {{- $desc = print $desc (printf (print "<#%d> - `%-" (index . 1 | len) "s`\n") (index . 0 | toInt) (index . 1)) -}} {{end}}
 {{editMessage $masterChannel $displayMSGID (cembed "title" "Tickets Display" "color" (randInt 16777216) "description" $desc)}}
-
