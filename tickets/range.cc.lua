@@ -96,7 +96,7 @@
             {{$content = reReplace `\n\n` $content "\n"}}
             {{editMessage $masterChannel $displayMSGID (cembed "title" "Tickets Display" "color" (randInt 16777216) "description" $content)}}
             {{$map := sdict}}
-            {{with (dbGet 0 "ticketDisplay").Value}} {{$map = sdict .}} {{$map.Del $tn}} {{end}}
+            {{with (dbGet 0 "ticketDisplay").Value}} {{$map = sdict .}} {{$map.Del (str $master.channelID)}} {{end}}
             {{dbSet 0 "ticketDisplay" $map}}
         {{end}}
     {{end}}
