@@ -42,10 +42,9 @@
 {{if eq .Channel.ParentID $category}}
     {{$tn := reFind `\d+` .Channel.Name}}
     {{if $tn}}
-        {{$tnLen := $tn}} {{range seq (len $tn) 6}} {{$tnLen = print 0 $tnLen}} {{end}}
-        {{$regexMain := print "`#" $tnLen "`.*"}}
-        {{$subRegex := print $TO `|` $TS `|` $TC}}
         {{$master := sdict (dbGet (toInt $tn) "ticket").Value}}
+        {{$regexMain := print "<#" $master.channelID ">.*"}}
+        {{$subRegex := print $TO `|` $TS `|` $TC}}
         {{$creator := toInt $master.userID}}{{$ticketCounter := toInt $master.ticketCounter}}
 
         {{/* CHECKS */}}
