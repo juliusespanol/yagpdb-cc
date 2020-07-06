@@ -182,3 +182,4 @@ All good! If you did everything right, you should now be good to use your Reacti
 **Delay (in hours):** {{toInt $setup.Delay}}
 {{deleteResponse 120}}
 {{end}}
+{{deleteTrigger 7}}
