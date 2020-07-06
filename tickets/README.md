@@ -46,7 +46,7 @@ After that you can delete the setup command.<p>
 
 ### Screenshots
 <h1 align="center"><img src="https://imgur.com/IpFJWNq.png" height=341px width=890px></img><p><p>
-<h1 align="center"><img src="https://imgur.com/9M9lnVS.png" height=354px width=428px></img><p><p>
+<h1 align="center"><img src="https://imgur.com/4eozdra.png" height=354px width=428px></img><p><p>
 <h1 align="center"><img src="https://imgur.com/LaQQoQp.png" height=753px width=923px></img><p><p>
 <h1 align="center"><img src="https://imgur.com/48f5tia.png" height=222px width=452px></img><p><p>
 <h1 align="center"><img src="https://imgur.com/op7WvMj.png" height=810px width=700px></img><p><p>
