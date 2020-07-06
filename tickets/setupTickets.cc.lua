@@ -151,6 +151,7 @@
         {{execCC $CCID nil 0 (sdict "test" "test" "id" $checkMsg "sch" $SchedueledCCID "thisCC" .CCID)}}
     {{end}}
 {{else}}
+{{dbDel 0 "ticketDisplay"}}
 {{deleteMessage nil .ExecData.id 0}}
 {{$id := sendMessageRetID $masterTicketChannelID (cembed "title" "Tickets Display" "color" (randInt 16777216))}}
 {{dbSet 0 "ticket_cfg" (sdict "Admins" $Admins "Mods" $Mods "MentionRoleID" (str $MentionRoleID) "OpenEmoji" $OpenEmoji "CloseEmoji" $CloseEmoji "SolveEmoji" $SolveEmoji "AdminOnlyEmoji" $AdminOnlyEmoji "ConfirmCloseEmoji" $ConfirmCloseEmoji "CancelCloseEmoji" $CancelCloseEmoji "SaveTranscriptEmoji" $SaveTranscriptEmoji "ReOpenEmoji" $ReOpenEmoji "DeleteEmoji" $DeleteEmoji "ticketOpen" (lower $ticketOpen) "ticketClose" (lower $ticketClose) "ticketSolving" (lower $ticketSolving) "SchedueledCCID" (str $SchedueledCCID) "CCID" (str $CCID) "msgID" (str $msgID) "Trc" (str $Trc) "category" (str $category) "Delay" (str $Delay) "masterTicketChannelID" $masterTicketChannelID "displayMSGID" $id)}}
