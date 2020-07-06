@@ -90,8 +90,7 @@
             {{$s := execAdmin "ticket close" ""}}
             {{$content := ""}}
             {{with (getMessage $masterChannel $displayMSGID).Embeds}} {{with index . 0}} {{$content = .Description}} {{end}} {{end}}
-            {{$tnLen := $tn}} {{range seq (len $tn) 6}} {{$tnLen = print 0 $tnLen}} {{end}}
-            {{$regexMain := print "`#" $tnLen "`.*"}}
+            {{$regexMain := print "<#" $master.channelID ">.*"}}
             {{$subRegex := print $TO `|` $TS `|` $TC}}
             {{$content = reReplace $regexMain $content ""}}
             {{$content = reReplace `\n\n` $content "\n"}}
