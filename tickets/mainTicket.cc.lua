@@ -67,7 +67,7 @@
     {{range seq 0 $len}}
         {{- $min := . -}}
         {{- range seq (add . 1) $len -}}
-            {{- if lt (index $arr $min 1) (index $arr . 1) }} {{ $min = . }} {{ end -}}
+            {{- if gt (index $arr $min 1) (index $arr . 1) }} {{ $min = . }} {{ end -}}
         {{- end -}}
         {{- if ne $min . -}}
             {{- $ := index $arr . -}}
