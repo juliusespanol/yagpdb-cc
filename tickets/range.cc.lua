@@ -22,6 +22,7 @@
     {{$TO := $setup.ticketOpen}}{{$TS := $setup.ticketSolving}}{{$TC := $setup.ticketClose}}
     {{$masterChannel := toInt $setup.masterTicketChannelID}}
     {{$displayMSGID := toInt $setup.displayMSGID}}
+    {{$strCID := str .Channel.ID}}
     {{if .ExecData.um}}
         {{if ge $counter 1}}
             {{if le (len $entries) 5}}
@@ -88,15 +89,9 @@
             {{sendMessage nil (cembed "description" "Ticket is being deleted." "color" 1146986)}}
             {{dbDel (toInt $tn) "ticket"}}
             {{$s := execAdmin "ticket close" ""}}
-            {{$content := ""}}
-            {{with (getMessage $masterChannel $displayMSGID).Embeds}} {{with index . 0}} {{$content = .Description}} {{end}} {{end}}
-            {{$regexMain := print "<#" $master.channelID ">.*"}}
-            {{$subRegex := print $TO `|` $TS `|` $TC}}
-            {{$content = reReplace $regexMain $content ""}}
-            {{$content = reReplace `\n\n` $content "\n"}}
-            {{editMessage $masterChannel $displayMSGID (cembed "title" "Tickets Display" "color" (randInt 16777216) "description" $content)}}
             {{$map := sdict}}
-            {{with (dbGet 0 "ticketDisplay").Value}} {{$map = sdict .}} {{$map.Del (str $master.channelID)}} {{end}}
+            {{with (dbGet 0 "ticketDisplay").Value}} {{$map = sdict .}} {{$map.Del (str $master.channelID)}} {{dbSet 0 "ticketDisplay" $map}} {{end}}
+            {{$s := sendTemplate nil "display" (sdict "ID" $strCID "Arg" $TC "Master" $masterChannel "MsgID" $displayMSGID)}}
             {{dbSet 0 "ticketDisplay" $map}}
         {{end}}
     {{end}}
@@ -117,4 +112,24 @@
             {{scheduleUniqueCC $SchedueledCCID nil $3HoursAlert $tn (sdict "alert" 1)}}
         {{end}}
     {{end}}
+{{end}}
+
+{{define "display"}}
+{{$arg := .TemplateArgs.Arg}}
+{{$ID := str .TemplateArgs.ID}}
+{{with (dbGet 0 "ticketDisplay").Value}} {{with sdict .}} {{if .Get $ID}} {{.Set $ID $arg}} {{dbSet 0 "ticketDisplay" .}} {{end}} {{end}} {{end}}
+{{$arr := cslice}}
+{{with (dbGet 0 "ticketDisplay").Value}}
+    {{$map := sdict .}}
+    {{range $k, $v := $map}} {{- $arr = $arr.Append (cslice $v $k) -}} {{end}}
+    {{$len := len $arr}}
+    {{range seq 0 $len}}
+        {{- $min := . -}}
+        {{- range seq (add . 1) $len -}} {{- if lt (index $arr $min 1) (index $arr . 1) }} {{ $min = . }} {{ end -}} {{- end -}}
+        {{- if ne $min . -}} {{- $ := index $arr . -}} {{- $arr.Set . (index $arr $min) -}} {{- $arr.Set $min $ -}} {{- end -}}
+    {{end}}
+{{end}}
+{{$desc := printf "%s - %-10s\n" "**TicketID**" "**Status**"}}
+{{range $arr}} {{- $desc = print $desc (printf (print "<#%d> - `%-" (index . 0 | len) "s`\n") (index . 1 | toInt) (index . 0)) -}} {{end}}
+{{editMessage .TemplateArgs.Master .TemplateArgs.MsgID (cembed "title" "Tickets Display" "color" (randInt 16777216) "description" $desc)}}
 {{end}}
