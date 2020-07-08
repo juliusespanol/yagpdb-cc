@@ -149,7 +149,7 @@
     {{$len := len $arr}}
     {{range seq 0 $len}}
         {{- $min := . -}}
-        {{- range seq (add . 1) $len -}} {{- if lt (index $arr $min 1) (index $arr . 1) }} {{ $min = . }} {{ end -}} {{- end -}}
+        {{- range seq (add . 1) $len -}} {{- if gt (index $arr $min 1) (index $arr . 1) }} {{ $min = . }} {{ end -}} {{- end -}}
         {{- if ne $min . -}} {{- $ := index $arr . -}} {{- $arr.Set . (index $arr $min) -}} {{- $arr.Set $min $ -}} {{- end -}}
     {{end}}
 {{end}}
