@@ -62,7 +62,7 @@
 {{$arr := cslice}}
 {{with (dbGet 0 "ticketDisplay").Value}}
     {{$map := sdict .}}
-    {{range $k, $v := $map}} {{- $arr = $arr.Append (cslice $k $v) -}} {{end}}
+    {{range $k, $v := $map}} {{- $arr = $arr.Append (cslice $v $k) -}} {{end}}
     {{$len := len $arr}}
     {{range seq 0 $len}}
         {{- $min := . -}}
@@ -77,5 +77,5 @@
     {{end}}
 {{end}}
 {{$desc := printf "%s - %-10s\n" "**TicketID**" "**Status**"}}
-{{range $arr}} {{- $desc = print $desc (printf (print "<#%d> - `%-" (index . 1 | len) "s`\n") (index . 0 | toInt) (index . 1)) -}} {{end}}
+{{range $arr}} {{- $desc = print $desc (printf (print "<#%d> - `%-" (index . 0 | len) "s`\n") (index . 1 | toInt) (index . 0)) -}} {{end}}
 {{editMessage $masterChannel $displayMSGID (cembed "title" "Tickets Display" "color" (randInt 16777216) "description" $desc)}}
