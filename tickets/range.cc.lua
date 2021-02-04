@@ -1,12 +1,12 @@
 {{/*
     Name: range.cc.lua
     Dont change anything!
-
+ 
     This is the "Range CC" command.
-
+ 
     Trigger: None
 /*}}
-
+ 
 {{/* ACTUAL CODE! DONT TOUCH */}}
 {{if .ExecData.test}}
     {{execCC .ExecData.sch nil 1 (sdict "test" "test" "id" .ExecData.id "thisCC" .ExecData.thisCC)}}
@@ -113,7 +113,7 @@
         {{end}}
     {{end}}
 {{end}}
-
+ 
 {{define "display"}}
 {{$arg := .TemplateArgs.Arg}}
 {{$ID := str .TemplateArgs.ID}}
