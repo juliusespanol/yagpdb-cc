@@ -1,15 +1,15 @@
 {{/*
     Name: cancelInactive.cc.lua
     This command manages the inactivity of tickets.
-
+ 
     Dont change anything!
-
+ 
     Trigger: Regex
     Regex: .*
-
+ 
     If you already have a .* trigger on your server, it`s advisable that you put this command on that same CC. You can just copy and paste it below everything of your already existing CC.
 /*}}
-
+ 
 {{/* ACTUAL CODE! DONT TOUCH */}}
 {{$setup := sdict}} {{with (dbGet 0 "ticket_cfg").Value}} {{$setup = sdict .}} {{end}}
 {{$category := toInt $setup.category}}
@@ -19,7 +19,7 @@
 	{{$tn := reFind `\d+` .Channel.Name}}
 	{{if $tn}}
 		{{$master := sdict (dbGet (toInt $tn) "ticket").Value}}
-
+ 
 		{{/* Doing Stuff */}}
 		{{cancelScheduledUniqueCC $SchedueledCCID $tn}}
 		{{$time :=  currentTime}}
