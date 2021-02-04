@@ -24,12 +24,12 @@
 		{{$key := print $tn "adicionados"}}
 		{{$user := .User}}
 		{{$isMod := false}} {{$isModA := false}}
-		{{$cmd := reFind `(?i)\$add|\$remove` .Cmd}}
+		{{$cmd := reFind `(?i)\!add|\!remove` .Cmd}}
 		{{$master := sdict (dbGet (toInt $tn) "ticket").Value}}
 		{{$creator := toInt $master.userID}}
 		{{$atual := toInt $master.ticketCounter}}
 		{{$tUser := .User}}
-
+ 
 		{{/* Doing Stuff */}}
 		{{range .Member.Roles}} {{if or (in $mods .) (in $admins .)}} {{$isModA = true}} {{end}} {{end}}
 		{{if ne (toInt $master.pos) 3}}
@@ -39,7 +39,7 @@
 						{{$user = .}}
 						{{range (getMember $user.ID).Roles}} {{if in $mods .}} {{$isMod = true}} {{end}} {{end}}
 						{{$isAlready := dbGet $user.ID $key}}
-						{{if eq $cmd "$add"}}
+						{{if eq $cmd "!add"}}
 							{{if lt $atual 15}}
 								{{if not $isMod}}
 									{{if and (not $isAlready) (ne $user.ID $creator)}}
@@ -57,7 +57,7 @@
 							{{else}}
 							The maximum amount of participants in a ticket is 15 users, {{$tUser.Mention}}
 							{{end}}
-						{{else if eq $cmd "$remove"}}
+						{{else if eq $cmd "!remove"}}
 							{{if not $isMod}}
 								{{if $isAlready}}
 									{{if ne $user.ID $creator}}
@@ -80,7 +80,7 @@
 						Invalid user, {{$tUser.Mention}}
 					{{end}}
 				{{else}}
-					Correct usage of the command: $add or $remove @user
+					Correct usage of the command: !add or !remove @user
 				{{end}}
 			{{end}}
 		{{end}}
