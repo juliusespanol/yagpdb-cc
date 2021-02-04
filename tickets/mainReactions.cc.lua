@@ -1,12 +1,12 @@
 {{/*
     Name: mainReactions.cc.lua
     This command manages the tickets reactions.
-
+ 
     Dont change anything!
-
+ 
     Trigger: Reaction with "Added + Removed Reactions" option
 /*}}
-
+ 
 {{/* ACTUAL CODE! DONT TOUCH */}}
 {{$setup := sdict}} {{with (dbGet 0 "ticket_cfg").Value}} {{$setup = sdict .}} {{end}}
 {{$admins := $setup.Admins}} {{$mods := $setup.Mods}}
@@ -20,19 +20,19 @@
 {{$strCID := str .Channel.ID}}
 {{$isMod := false}}{{$isAdmin := false}}
 {{$TO := $setup.ticketOpen}}{{$TS := $setup.ticketSolving}}{{$TC := $setup.ticketClose}}
-
+ 
 {{/* OPENING TICKET */}}
 {{if and .ReactionAdded (eq $RID $msgID) (eq .Reaction.Emoji.Name $oe)}} {{$s := exec "ticket open" "ticket"}} {{deleteMessageReaction nil $msgID .User.ID $oe}} {{end}}
-
+ 
 {{if eq .Channel.ParentID $category}}
 {{$tn := reFind `\d+` .Channel.Name}}
 {{if $tn}}
     {{$master := sdict (dbGet (toInt $tn) "ticket").Value}}
     {{$creator := toInt $master.userID}}{{$ticketCounter := toInt $master.ticketCounter}}
-
+ 
     {{/* CHECKS */}}
     {{range .Member.Roles}} {{if in $mods .}} {{$isMod = true}} {{end}} {{if in $admins .}} {{$isAdmin = true}} {{end}} {{end}}
-
+ 
     {{/* CLOSING TICKET */}}
     {{if and .ReactionAdded (or (eq .User.ID $creator) $isMod $isAdmin) (eq $RID (toInt $master.mainMsgID)) (ne (toInt $master.pos) 3)}}
         {{if eq .Reaction.Emoji.Name $ce}}
@@ -61,7 +61,7 @@
             {{dbSet (toInt $tn) "ticket" $master}}
         {{end}}
     {{end}}
-
+ 
     {{/* SOLVING TICKET */}}
     {{if and (or $isMod $isAdmin) (eq $RID (toInt $master.mainMsgID)) (eq .Reaction.Emoji.Name $se)}}
         {{if .ReactionAdded}}
@@ -89,7 +89,7 @@
         {{end}}
         {{if and .ReactionAdded (ne (toInt $master.pos) 2) (ne (toInt $master.pos) 1)}} {{deleteMessageReaction nil $RID .User.ID $se}} {{end}}
     {{end}}
-
+ 
     {{/* ADMIN ONLY TICKET */}}
     {{if and $isAdmin (eq $RID (toInt $master.mainMsgID)) (eq .Reaction.Emoji.Name $aoe)}}
         {{if .ReactionAdded}}
@@ -104,7 +104,7 @@
             {{$s := exec "ticket ao"}}
         {{end}}
     {{end}}
-
+ 
     {{/* FINAL ACTIONS */}}
     {{$oldid := toInt $master.mainMsgID}}
     {{if and (or $isMod $isAdmin) (eq (toInt $master.lastMessageID) $RID) .ReactionAdded}}
