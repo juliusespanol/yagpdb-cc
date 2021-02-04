@@ -6,15 +6,15 @@
     Regex: \A-(((checktickets|ct) (o(ld(est)?)?|n(ew(est)?)?|full(list)?|fl|big|small(list)?|sl|\d+))|(checktickets|ct))\z
     Dont change anything!
 /*}}
-
-
+ 
+ 
 {{/*ACTUAL CODE! DONT TOUCH*/}}
 {{$setup := sdict}} {{with (dbGet 0 "ticket_cfg").Value}} {{$setup = sdict .}} {{end}}
 {{$ticketOpen := $setup.ticketOpen}}{{$ticketClose := $setup.ticketClose}}{{$ticketSolving := $setup.ticketSolving}}
 {{$est := ""}}{{$d := 0}}{{$msg := ""}}{{$pm := ""}}{{$embed := ""}}{{$timed := ""}}{{$s1 := "" }}{{$s2 := ""}}{{$s3 := ""}}{{$s4 := "" }}{{$s5 := ""}}{{$fields := ""}}{{$t1 := "These are your server tickets:"}}{{$t2 := "Ticket ID: "}}{{$t := ""}}{{$f := "🎟️"}}{{$tn := 0}}{{$pA := ""}}{{$pM := ""}}
 {{$cmd := reFind `(?i)o(ld(est)?)?|n(ew(est)?)?|full(list)?|fl|big|small(list)?|sl|\d+` .Cmd}}{{$getNumber := reFind `\d+` $cmd}}{{$c := 3066993}}
 {{$ME := cembed "title" "NO TICKETS OPENED" "description" "All tickets already solved" "color" $c}}
-
+ 
 {{if reFind `(?i)fl|full|big` $cmd}}
     {{$tickets := dbTopEntries "ticket" 25 0}}
     {{if eq (len $tickets) 0}} {{$d = 1}}
