@@ -11,7 +11,8 @@
  
  
 {{/* ACTUAL CODE! DONT TOUCH */}}
-{{$MentionRoleID := 784844402920390697}}
+{{$setup := sdict}} {{with (dbGet 0 "ticket_cfg").Value}} {{$setup = sdict .}} {{end}}
+{{$ModeratorRoleID := toInt $setup.MentionRoleID}}
 {{if .ExecData.test}}
     {{execCC .ExecData.thisCC nil 1 (sdict "id" .ExecData.id)}}
 {{else}}
@@ -29,7 +30,7 @@
                 {{$master.Set "duration" (currentTime.Add (toDuration "3h"))}}
                 {{dbSet (toInt $tn) "ticket" $master}}
                 {{$embed := cembed "description" "This ticket will be closed in 3 hours because of inactivity!" "title" "WARNING!"}}
-                {{$content := print "The ticket " $tn " will be closed soon!\n\n" $MentionRoleID }}
+                {{$content := print "The ticket " $tn " will be closed soon!\n\n <@&" $ModeratorRoleID ">" }}
                 {{sendMessageNoEscape nil (complexMessage "content" $content "embed" $embed)}}
                 {{scheduleUniqueCC .CCID nil 9000 $tn (sdict "alert" 2)}}
             {{else if eq $alert 2}}
@@ -37,7 +38,7 @@
                 {{$master.Set "alert" 2}}
                 {{dbSet (toInt $tn) "ticket" $master}}
                 {{$embed := cembed "description" "This ticket will be closed in 30 minutes because of inactivity!" "title" "WARNING!"}}
-                {{$content := print "The ticket " $tn " is about to be closed!\n\n" $MentionRoleID }}
+                {{$content := print "The ticket " $tn " is about to be closed!\n\n <@&" $ModeratorRoleID ">" }}
                 {{sendMessageNoEscape nil (complexMessage "content" $content "embed" $embed)}}
                 {{scheduleUniqueCC .CCID nil 1800 $tn (sdict "alert" 3)}}
             {{else if eq $alert 3}}
