@@ -31,7 +31,7 @@
         {{$masterTicketChannelID := 782935725679181855}} {{/* A channel ID where the status of ur tickets will be displayed (Further explained in the README) */}}
         {{$Trc := 782935725679181855}} {{/* Channe ID to save transcripts */}}
         {{$category := 782931111872692244}} {{/* Tickets category ID */}}
-        {{$Delay := 1}} {{/* Delay (in hours) for a ticket to automatically be deleted if no messages are sent */}}
+        {{$Delay := 24}} {{/* Delay (in hours) for a ticket to automatically be deleted if no messages are sent */}}
 
 {{/* END OF USER VARIABLES */}}
 
