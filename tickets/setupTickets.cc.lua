@@ -7,7 +7,7 @@
 
     {{/* Open Message Info */}}
         {{$msgOpenChannelID := 782935662118567956}} {{/* Channel ID where the msg to open tickets is at. THIS CHANNEL CANT BE IN THE SAME CATEGORY AS THE TICKETS!!!!! */}}
-        {{$msgID := 784848284719513650}} {{/* Message ID of the message the user has to react to open ticket */}}
+        {{$msgID := 807294248855666748}} {{/* Message ID of the message the user has to react to open ticket */}}
 
     {{/* EMOJIS - Emoji MUST be unicode characters, like the examples here. */}}
         {{$OpenEmoji := "📩"}}
