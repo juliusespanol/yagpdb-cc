@@ -32,7 +32,7 @@
  
     {{/* CHECKS */}}
     {{range .Member.Roles}} {{if in $mods .}} {{$isMod = true}} {{end}} {{if in $admins .}} {{$isAdmin = true}} {{end}} {{end}}
- 
+    {{print "pumasok dito before mag close "  }}
     {{/* CLOSING TICKET */}}
     {{if and .ReactionAdded (or (eq .User.ID $creator) $isMod $isAdmin) (eq $RID (toInt $master.mainMsgID)) (ne (toInt $master.pos) 3)}}
         {{if eq .Reaction.Emoji.Name $ce}}
