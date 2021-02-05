@@ -6,6 +6,7 @@
 
     Trigger: Regex
     Regex: \A\$(add|remove)
+    New Regex: ^\!add|^\!remove
 
     Usage:
     $add @user
