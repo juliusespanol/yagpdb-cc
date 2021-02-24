@@ -4,7 +4,9 @@
         {{$Admins := cslice 774825466771013633}} {{/* IDs of your ADMINs Roles. Leave the "cslice" here even if you have only 1 role */}}
         {{$Mods := cslice 774827351409557524}} {{/* IDs of your MODs Roles. Leave the "cslice" here even if you have only 1 role */}}
         {{$MentionRoleID := 784844402920390697}} {{/* Role to be mentioned when a new ticket is opened */}}
-
+        {{$BreadModID := 784844402920390697}} {{/* Role to be mentioned when a new ticket is opened */}}
+        {{$BreadCrumbID := 784844402920390697}} {{/* Role to be mentioned when a new ticket is opened */}}
+        
     {{/* Open Message Info */}}
         {{$msgOpenChannelID := 782935662118567956}} {{/* Channel ID where the msg to open tickets is at. THIS CHANNEL CANT BE IN THE SAME CATEGORY AS THE TICKETS!!!!! */}}
         {{$msgID := 807294248855666748}} {{/* Message ID of the message the user has to react to open ticket */}}
