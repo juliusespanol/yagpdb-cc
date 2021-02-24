@@ -1,15 +1,15 @@
 {{/* USER VARIABLES */}}
 
     {{/* Satff Roles */}}
-        {{$Admins := cslice 774825466771013633}} {{/* IDs of your ADMINs Roles. Leave the "cslice" here even if you have only 1 role */}}
-        {{$Mods := cslice 774827351409557524}} {{/* IDs of your MODs Roles. Leave the "cslice" here even if you have only 1 role */}}
-        {{$MentionRoleID := 784844402920390697}} {{/* Role to be mentioned when a new ticket is opened */}}
-        {{$BreadModID := 784844402920390697}} {{/* Role to be mentioned when a new ticket is opened */}}
-        {{$BreadCrumbID := 784844402920390697}} {{/* Role to be mentioned when a new ticket is opened */}}
+        {{$Admins := cslice 778542654497619998}} {{/* IDs of your ADMINs Roles. Leave the "cslice" here even if you have only 1 role */}}
+        {{$Mods := cslice 778542654497619998}} {{/* IDs of your MODs Roles. Leave the "cslice" here even if you have only 1 role */}}
+        {{$MentionRoleID := 778542654497619998}} {{/* Role to be mentioned when a new ticket is opened */}}
+        {{$BreadModID := 778542654497619998}} {{/* Role to be mentioned when a new ticket is opened */}}
+        {{$BreadCrumbID := 806168129113817119}} {{/* Role to be mentioned when a new ticket is opened */}}
         
     {{/* Open Message Info */}}
-        {{$msgOpenChannelID := 782935662118567956}} {{/* Channel ID where the msg to open tickets is at. THIS CHANNEL CANT BE IN THE SAME CATEGORY AS THE TICKETS!!!!! */}}
-        {{$msgID := 807294248855666748}} {{/* Message ID of the message the user has to react to open ticket */}}
+        {{$msgOpenChannelID := 806188312108728332}} {{/* Channel ID where the msg to open tickets is at. THIS CHANNEL CANT BE IN THE SAME CATEGORY AS THE TICKETS!!!!! */}}
+        {{$msgID := 806189426182062110}} {{/* Message ID of the message the user has to react to open ticket */}}
 
     {{/* EMOJIS - Emoji MUST be unicode characters, like the examples here. */}}
         {{$OpenEmoji := "📩"}}
@@ -30,9 +30,9 @@
     {{/* Misc */}}
         {{$CCID := 7}} {{/* ID of your "Range CC" */}}
         {{$SchedueledCCID := 9}} {{/* ID of your "Schedueled CC" */}}
-        {{$masterTicketChannelID := 807316529598562314}} {{/* A channel ID where the status of ur tickets will be displayed (Further explained in the README) */}}
-        {{$Trc := 782935725679181855}} {{/* Channe ID to save transcripts */}}
-        {{$category := 782931111872692244}} {{/* Tickets category ID */}}
+        {{$masterTicketChannelID := 807607035738587156}} {{/* A channel ID where the status of ur tickets will be displayed (Further explained in the README) */}}
+        {{$Trc := 806188836484677652}} {{/* Channe ID to save transcripts */}}
+        {{$category := 806188000349651014}} {{/* Tickets category ID */}}
         {{$Delay := 1}} {{/* Delay (in hours) for a ticket to automatically be deleted if no messages are sent */}}
 
 {{/* END OF USER VARIABLES */}}
