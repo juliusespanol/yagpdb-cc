@@ -18,6 +18,8 @@
 {{$ConfirmCloseEmoji := $setup.ConfirmCloseEmoji}}
 {{$CancelCloseEmoji := $setup.CancelCloseEmoji}}
 {{$ModeratorRoleID := toInt $setup.MentionRoleID}}
+{{$BreadModID := toInt $setup.BreadModID}}
+{{$BreadCrumbID := toInt $setup.BreadCrumbID}}
 {{$SchedueledCCID := toInt $setup.SchedueledCCID}}
 {{$masterChannel := toInt $setup.masterTicketChannelID}}
 {{$displayMSGID := toInt $setup.displayMSGID}}
@@ -27,7 +29,7 @@
 {{$TC := $setup.ticketSolving}}
 {{$time :=  currentTime}}
 {{$content := print "Welcome, " .User.Mention "\nNew ticket opened, <@&" $ModeratorRoleID "> !!"}}
-{{$descr := print "A <@&" $ModeratorRoleID "> will talk to you soon!\n\nFor now, please describe in **detail** your concern/issue so that we can respond faster!\n\nAn available mod will use the " $SolveEmoji " icon to assign the ticket to themself.\n\nTo close the ticket, click on the " $CloseEmoji ". Click the " $ConfirmCloseEmoji " icon to confirm or the " $CancelCloseEmoji " icon to cancel."}}
+{{$descr := print "A <@&" $BreadModID "> or <@&" $BreadCrumbID ">  will talk to you soon!\n\nFor now, please describe in **detail** your concern/issue so that we can respond faster!\n\nAn available mod will use the " $SolveEmoji " icon to assign the ticket to themself.\n\nTo close the ticket, click on the " $CloseEmoji ". Click the " $ConfirmCloseEmoji " icon to confirm or the " $CancelCloseEmoji " icon to cancel."}}
 {{$embed := cembed "color" 8190976 "description" $descr "timestamp" $time}}
 {{$id := sendMessageNoEscapeRetID nil (complexMessage "content" $content "embed" $embed)}}
 {{addMessageReactions nil $id $CloseEmoji $SolveEmoji $AdminOnlyEmoji}}
