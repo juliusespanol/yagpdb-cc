@@ -28,7 +28,7 @@
 {{$TS := $setup.ticketClose}}
 {{$TC := $setup.ticketSolving}}
 {{$time :=  currentTime}}
-{{$content := print "Welcome, " .User.Mention "\nNew ticket opened, <@&" $ModeratorRoleID "> !!"}}
+{{$content := print "Welcome, " .User.Mention "\nNew ticket opened, <@&" $BreadModID "> and <@&" $BreadCrumbID "> !!"}}
 {{$descr := print "A <@&" $BreadModID "> or <@&" $BreadCrumbID ">  will talk to you soon!\n\nFor now, please describe in **detail** your concern/issue so that we can respond faster!\n\nAn available mod will use the " $SolveEmoji " icon to assign the ticket to themself.\n\nTo close the ticket, click on the " $CloseEmoji ". Click the " $ConfirmCloseEmoji " icon to confirm or the " $CancelCloseEmoji " icon to cancel."}}
 {{$embed := cembed "color" 8190976 "description" $descr "timestamp" $time}}
 {{$id := sendMessageNoEscapeRetID nil (complexMessage "content" $content "embed" $embed)}}
